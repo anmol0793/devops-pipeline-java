@@ -14,7 +14,7 @@ pipeline {
         defaultValue:'Anmol')
 }
     triggers { 
-        pollSCM('*****')
+        pollSCM('* * * * *')
     }
     options {
      buildDiscarder logRotator(artifactDaysToKeepStr: '2', artifactNumToKeepStr: '2', daysToKeepStr: '2', numToKeepStr: '2')
