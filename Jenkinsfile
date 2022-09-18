@@ -3,7 +3,7 @@ pipeline {
     environment {
         JAVA_VERSION="11"
         DEVOPS_BATCH="AUG2022"
-    }
+}
     parameters {
         choice(name: 'DEPLOYMENT_ENV',
         choices: ['UAT1', 'UAT2', 'PREPOD'],
@@ -12,7 +12,7 @@ pipeline {
         string(name: 'DUMMYSTR',
         description : 'just a dummy value',
         defaultValue:'Anmol')
-    }
+}
     triggers { 
         pollSCM('*****')
     }
@@ -36,14 +36,12 @@ pipeline {
              }
         }
      }
-            post {
+        post {
              always {
                 slackSend channel: 'devops', message: 'BUILD COMPLETED'
     
             }
          
-        
-
-    }
+        }
 
 }
