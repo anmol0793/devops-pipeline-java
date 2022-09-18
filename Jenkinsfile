@@ -19,7 +19,7 @@ pipeline {
     options {
      buildDiscarder logRotator(artifactDaysToKeepStr: '2', artifactNumToKeepStr: '2', daysToKeepStr: '2', numToKeepStr: '2')
      }
-    tools {
+     tools {
      jdk 'jdk11'
      maven 'Maven'
      }
@@ -28,19 +28,22 @@ pipeline {
         stage('Checkout') {
             steps{
                 checkout scm
-            }
-        }
-        stage('Compile'){
+             }
+        }    
+         stage('Compile'){
             steps{
                 sh 'mvn compile'
              }
         }
+     }
             post {
              always {
                 slackSend channel: 'devops', message: 'BUILD COMPLETED'
     
             }
          
-        }
+        
+
+    }
 
 }
